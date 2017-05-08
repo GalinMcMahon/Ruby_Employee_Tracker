@@ -6,13 +6,12 @@
   <input id="name" name="name" type="text">
   <button type="submit" class="btn btn-success">Update</button>
 </form>
-<br>
+<br><br>
 
-
-
-<br>
 <form action="/delete_employee/<%= @employee.id %>" method="post">
   <input name="_method" type="hidden" value="delete">
   <label for="name">Delete <%=@employee.name %>:</label>
   <button type="submit" class="btn btn-danger">Delete employee</button>
 </form>
+
+<a href="/">Home</a>

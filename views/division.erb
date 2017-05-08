@@ -6,38 +6,51 @@
   <input id="name" name="name" type="text">
   <button type="submit" class="btn btn-success">Update</button>
 </form>
-<br>
+<br><br>
 
-
-
-<br>
 <form action="/delete_division/<%= @division.id %>" method="post">
   <input name="_method" type="hidden" value="delete">
   <label for="name">Delete <%=@division.name %>:</label>
   <button type="submit" class="btn btn-danger">Delete division</button>
 </form>
+<hr>
 
+<h3>Projects in this division:</h3>
+  <% if @projects.any? %>
+    <ul>
+      <% @projects.each do |project| %>
+        <li><a href="/project/<%= project.id()%>"><%= project.name() %></a> </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p> There are no projects assigned to <%= @division.name() %>. </p>
+  <% end %>
 
-
+<h3>Add a Project</h3>
+  <form action="/add_project/<%= @division.id %>" method="post">
+    <label for="name">New Project</label>
+    <input id="name" name="name" type="text">
+    <button type="submit">Add Project</button>
+  </form>
+  <hr>
 
 <h3>Employees in this division:</h3>
-
-<% if @employees.any? %>
-
-  <ul>
-    <% @employees.each do |employee| %>
-    <li><a href="/employee/<%= employee.id()%>"><%= employee.name() %></a> </li>
-    <% end %>
-  </ul>
-
-<% else %>
-  <p> There are no employees assigned to <%= @division.name() %>. </p>
-<% end %>
+  <% if @employees.any? %>
+    <ul>
+      <% @employees.each do |employee| %>
+        <li><a href="/employee/<%= employee.id()%>"><%= employee.name() %></a> </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p> There are no employees assigned to <%= @division.name() %>. </p>
+  <% end %>
 
 <h3>Add an Employee</h3>
+  <form action="/add_employee/<%= @division.id %>" method="post">
+    <label for="name">New Employee</label>
+      <input id="name" name="name" type="text">
+    <button type="submit">Add Employee</button>
+  </form>
+  <hr>
 
-<form action="/add_employee/<%= @division.id %>" method="post">
-  <label for="name">New Employee</label>
-  <input id="name" name="name" type="text">
-  <button type="submit">Add Employee</button>
-</form>
+<a href="/">Home</a>
