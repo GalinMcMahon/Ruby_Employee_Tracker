@@ -1,0 +1,23 @@
+<h1>Adidas Company HR Management</h1>
+
+<h2>Divisions</h2>
+
+<% if @divisions.any? %>
+
+  <ul>
+    <% @divisions.each do |division| %>
+    <li><a href="/division/<%= division.id()%>"><%= division.name() %></a> </li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p> There are no divisions at Adidas. </p>
+<% end %>
+
+<h3>Add a Division</h3>
+
+<form action="/add_division" method="post">
+  <label for="name">New Division</label>
+  <input id="name" name="name" type="text">
+  <button type="submit">Add Division</button>
+</form>

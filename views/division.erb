@@ -1,0 +1,15 @@
+<h1>Adidas Company HR Management Division: <%= @division.name() %></h1>
+
+<h3>Employees in this division:</h3>
+
+<% if @employees.any? %>
+
+  <ul>
+    <% @employees.each do |employee| %>
+    <li><a href="/employees/<%= employee.id()%>"><%= employee.name() %></a> </li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p> There are no employees assigned to <%= @division.name() %>. </p>
+<% end %>
